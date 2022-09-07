@@ -13,14 +13,14 @@ async function run() {
 
         // creating consumer object and connecting it to kafka broker
         const consumer = kafka.consumer({
-            "groupId" : "test"
+            "groupId" : "test" // don't change unless you want to run multiple consumers in different groups
         });
         console.log("connecting ...");
         await consumer.connect();
         console.log("connected ...");
 
         await consumer.subscribe({
-            "topic" : "Users",
+            "topic" : "Events",
             "fromBeginning" : true, // set it to false if you want to read the latest data only
         });
 

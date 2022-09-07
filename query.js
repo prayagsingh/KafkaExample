@@ -5,7 +5,7 @@ const InMemoryCache = require('apollo-cache-inmemory').InMemoryCache;
 
 const client = new ApolloClient({
     link: createHttpLink({
-        uri: "https://api.thegraph.com/subgraphs/name/prayagsingh/socllydemos",
+        uri: "https://subgraph-url",
         fetch: fetch
     }),
     cache: new InMemoryCache()

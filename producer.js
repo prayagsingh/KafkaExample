@@ -30,16 +30,14 @@ async function run() {
         //msg = Object.keys(queryResponse.data)[0];
         // A-M its Partition 0 and N-Z its Partition 1
         // taking first letter of the args and is its less than then Partition 0 else Parition 1
-        // let partition;
-        // if (msg = "requesters") {
-        //     partition = 0;
-        // } else if (msg = "creators") {
-        //     partition = 1;
-        // } else if (msg = "appointments") {
-        //     partition = 2;
-        // } else if (msg = "ratings") {
-        //     partition = 3;
-        // }
+        let partition;
+        if (msg = "requesters") {
+            partition = 0;
+        } else if (msg = "creators") {
+            partition = 1;
+        } else if (msg = "appointments") {
+            partition = 2;
+        }
         //const partition = msg[0] < "N" ? 0 : 1;
         // const result = await producer.send({
         //     "topic" : "Users",
@@ -49,12 +47,12 @@ async function run() {
         //     }]
         // });
         //const message = JSON.stringify(queryResponse.data, 2, ' ');
-        
+        let response = ""; // add some logic to push the response from events in string
         const result = await producer.send({
-            "topic" : "Users",
+            "topic" : "Events",
             "messages" : [{
-                "value" : JSON.stringify((await doQuery()).data),
-                "partition" : 0
+                "value" : response, //JSON.stringify((await doQuery()).data), // must be in string even if it json
+                "partition" : partition
             }]
         });
         
